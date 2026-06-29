@@ -2,6 +2,7 @@ var express = require("express");
 var dotenv = require("dotenv");
 const { userRouter } = require("./routers/user.router");
 const { logger } = require("./middlewares/logger.middleware");
+const { dbConfig } = require("./configurations/db.config");
 dotenv.config();
 
 var app = express();
@@ -19,6 +20,7 @@ app.use("/api/v1/user/", userRouter);
 // });
 
 app.listen(PORT, () => {
+  dbConfig();
   console.log(`🚀 Listening to the port ${PORT}`);
 });
 
